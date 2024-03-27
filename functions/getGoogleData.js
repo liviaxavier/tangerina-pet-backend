@@ -20,7 +20,6 @@ async function GetData(range) {
       const rows = response.data.values;
       if (rows.length) {
         const [header, ...objects] = rows
-        console.log(header)
         return objects.map(row => {
             let obj = {}
             header.forEach(element => {

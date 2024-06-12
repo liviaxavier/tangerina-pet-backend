@@ -15,10 +15,7 @@ async function GetCategoriesImages() {
         
       const folder = google.drive({version: 'v2', auth: jwt})// google.sheets({ version: 'v4', auth: jwt });
       const fileList = await folder.files.list() // await folder.files.list() 
-      const items = fileList.data.items.filter(item => {
-        return item.parents[0] && item.parents[0].id === '1J35e46JZsyWeuI1Igk9aK0s1rDvV8N14'
-    })
-    .map(item => ({url: item.thumbnailLink, selfLink: item.selfLink}))
+      const items = fileList.data.items.map(item => ({url: item.thumbnailLink, selfLink: item.selfLink}))
     // .map(item => ({parents: item.parents}))
       return items
     } catch (err) {
